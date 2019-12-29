@@ -77,7 +77,7 @@
 
         vars = getUrlVars();
         var to_copy = vars["txt"];
-        $(".example").text($..parseHTML(to_copy));
+        $(".example").text($.parseHTML(to_copy));
 
         if (to_copy) {
             $(".create_link").show();
