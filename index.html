@@ -77,11 +77,14 @@
 	//yo
         vars = getUrlVars();
         var to_copy = vars["txt"];
-        $(".example").text($.parseHTML(to_copy));
+        $(".example").text(decodeURIComponent(to_copy));
 
+	    console.log(to_copy);
         if (to_copy) {
+		console.log("has text");
             $(".create_link").show();
         } else {
+		console.log("no text");
             $("code-box-copy").show();
         }
     </script>
