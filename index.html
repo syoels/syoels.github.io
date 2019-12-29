@@ -27,14 +27,7 @@
         font-size: 14px;
         cursor: pointer;
     }
-    
-    .code-box-copy {
-        visibility: hidden;
-    }
-    
-    .create_link {
-        visibility: hidden;
-    }
+   
 </style>
 
 <body>
@@ -79,12 +72,11 @@
         var to_copy = vars["txt"];
         $(".example").text(decodeURIComponent(to_copy));
 
-	    console.log(to_copy);
+	$(".create_link").hide();
+	$(".code-box-copy").hide();    
         if (to_copy) {
-		console.log("has text");
                 $(".code-box-copy").show();
         } else {
-		console.log("no text");
 		$(".create_link").show();
             
         }
