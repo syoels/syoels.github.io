@@ -18,9 +18,13 @@
   
     <div class="code-box-copy">
     <button class="code-box-copy__btn" data-clipboard-target="#example-html" title="Copy"></button>
-    <pre><code class="language-html" id="example-html">&lt;div class=&quot;example&quot;&gt;
-    Lorem ipsum
-	&lt;/div&gt;</code></pre>
+	<pre>
+	<code class="language-html" id="example-html">
+		<div class="example">
+    			Lorem ipsum
+    		</div>
+	</code>
+	</pre>
 </div>
 
 
@@ -29,6 +33,18 @@
 (function($) {
     $('.code-box-copy').codeBoxCopy();
 })(jQuery);
+	
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+}
+
+var to_copy = getUrlVars()["txt"];
+$(".example").text(to_copy);
+	
 </script>
   
   </body>
