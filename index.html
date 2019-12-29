@@ -33,10 +33,10 @@
 <body>
 
     <div class="code-box-copy">
-        <button class="code-box-copy__btn" data-clipboard-target="#example-html" title="Copy"></button>
+        <button class="code-box-copy__btn" id="cpy_btn" data-clipboard-target="#example-html" title="Copy"></button>
         <pre>
 		<code class="language-html" id="example-html">
-			<div class="example">
+			<div class="example" id="copy_from_here">
 				Lorem ipsum
 			</div>
 		</code>
@@ -50,15 +50,32 @@
     </div>
 
     <script>
-        (function($) {
-            $('.code-box-copy').codeBoxCopy();
-        })(jQuery);
+
 	// comment
         $(".create_link_btn").click(function() {
             var txt = $("#create_link_input").val();
             $("#link").attr("href", "https://syoels.github.io/?txt=" + txt);
             $("#link").text("You link is ready!");
         });
+	    
+function CopyToClipboard(containerid) {
+if (document.selection) { 
+    var range = document.body.createTextRange();
+    range.moveToElementText(document.getElementById(containerid));
+    range.select().createTextRange();
+    document.execCommand("copy"); 
+
+} else if (window.getSelection) {
+    var range = document.createRange();
+     range.selectNode(document.getElementById(containerid));
+     window.getSelection().addRange(range);
+     document.execCommand("copy");
+     alert("text copied") 
+}}
+	    
+	    $("#cpy_btn").click(function(){
+	    	CopyToClipboard("#copy_from_here");
+	    })
 
         function getUrlVars() {
             var vars = {};
