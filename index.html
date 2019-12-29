@@ -29,11 +29,11 @@
     }
     
     .code-box-copy {
-        opacity: 0;
+        visibility: hidden;
     }
     
     .create_link {
-        opacity: 0;
+        visibility: hidden;
     }
 </style>
 
@@ -82,10 +82,11 @@
 	    console.log(to_copy);
         if (to_copy) {
 		console.log("has text");
-            $(".create_link").show();
+                $("code-box-copy").show();
         } else {
 		console.log("no text");
-            $("code-box-copy").show();
+		$(".create_link").show();
+            
         }
     </script>
 
