@@ -27,7 +27,6 @@
         font-size: 14px;
         cursor: pointer;
     }
-   
 </style>
 
 <body>
@@ -50,32 +49,32 @@
     </div>
 
     <script>
-
-	// comment
+        // comment
         $(".create_link_btn").click(function() {
             var txt = $("#create_link_input").val();
             $("#link").attr("href", "https://syoels.github.io/?txt=" + txt);
             $("#link").text("You link is ready!");
         });
-	    
-function CopyToClipboard(containerid) {
-if (document.selection) { 
-    var range = document.body.createTextRange();
-    range.moveToElementText(document.getElementById(containerid));
-    range.select().createTextRange();
-    document.execCommand("copy"); 
 
-} else if (window.getSelection) {
-    var range = document.createRange();
-     range.selectNode(document.getElementById(containerid));
-     window.getSelection().addRange(range);
-     document.execCommand("copy");
-     alert("text copied") 
-}}
-	    
-	    $("#cpy_btn").click(function(){
-	    	CopyToClipboard("#copy_from_here");
-	    })
+        function CopyToClipboard(containerid) {
+            if (document.selection) {
+                var range = document.body.createTextRange();
+                range.moveToElementText(document.getElementById(containerid));
+                range.select().createTextRange();
+                document.execCommand("copy");
+
+            } else if (window.getSelection) {
+                var range = document.createRange();
+                range.selectNode(document.getElementById(containerid));
+                window.getSelection().addRange(range);
+                document.execCommand("copy");
+                alert("text copied")
+            }
+        }
+
+        $("#cpy_btn").click(function() {
+            CopyToClipboard("#copy_from_here");
+        })
 
         function getUrlVars() {
             var vars = {};
@@ -84,18 +83,18 @@ if (document.selection) {
             });
             return vars;
         }
-	    
+
         vars = getUrlVars();
         var to_copy = vars["txt"];
         $(".example").text(decodeURIComponent(to_copy));
 
-	$(".create_link").hide();
-	$(".code-box-copy").hide();    
+        $(".create_link").hide();
+        $(".code-box-copy").hide();
         if (to_copy) {
-                $(".code-box-copy").show();
+            $(".code-box-copy").show();
         } else {
-		$(".create_link").show();
-            
+            $(".create_link").show();
+
         }
     </script>
 
