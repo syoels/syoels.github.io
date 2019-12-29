@@ -14,6 +14,30 @@
 <!-- Cod Box Copy end -->
     
   </head>
+	
+	<style>
+		.create_link_btn {
+		width: 90px;
+    height: 26px;
+    background: #e83d3d;
+    color: white;
+    border: none;
+    padding: 5px;
+    font-weight: 100;
+    font-family: monospace;
+    font-size: 14px;
+    cursor: pointer;
+		}
+		.code-box-copy{
+			visibility: hidden;
+		}
+		.create_link{
+			visibility: hidden;
+		}
+		
+
+		
+	</style>
   <body>
   
 <div class="code-box-copy">
@@ -29,7 +53,7 @@
 	  
 <div class="create_link">
 	<input id="create_link_input" type="text" name="create_link_input">
-	<button class="create_link_btn" title="Create Link"></button>
+	<button class="create_link_btn" title="Create Link">Generate</button>
 	<a id="link" href="url"></a>
 </div>
 
@@ -56,7 +80,13 @@ function getUrlVars() {
 
 vars = getUrlVars(); 
 var to_copy = vars["txt"];
-$(".example").text(to_copy);
+$(".example").text($..parseHTML(to_copy));
+	
+	if(to_copy){
+		$(".create_link").show();
+	} else {
+		$("code-box-copy").show();
+	}
 	
 </script>
   
