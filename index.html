@@ -16,15 +16,21 @@
   </head>
   <body>
   
-    <div class="code-box-copy">
+<div class="code-box-copy">
     <button class="code-box-copy__btn" data-clipboard-target="#example-html" title="Copy"></button>
 	<pre>
-	<code class="language-html" id="example-html">
-		<div class="example">
-    			Lorem ipsum
-    		</div>
-	</code>
+		<code class="language-html" id="example-html">
+			<div class="example">
+				Lorem ipsum
+			</div>
+		</code>
 	</pre>
+</div>
+	  
+<div class="create_link">
+	<input id="create_link_input" type="text" name="create_link_input">
+	<button class="create_link_btn" title="Create Link"></button>
+	<a id="link" href="url"></a>
 </div>
 
 
@@ -34,6 +40,12 @@
     $('.code-box-copy').codeBoxCopy();
 })(jQuery);
 	
+$(".create_link_btn").click(function(){
+	var txt = $("#create_link_input").val(); 
+	$("#link").attr("href", "https://syoels.github.io/?txt=" + txt);
+	$("#link").text("You link is ready!");
+});
+	
 function getUrlVars() {
     var vars = {};
     var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
@@ -42,7 +54,8 @@ function getUrlVars() {
     return vars;
 }
 
-var to_copy = getUrlVars()["txt"];
+vars = getUrlVars(); 
+var to_copy = vars["txt"];
 $(".example").text(to_copy);
 	
 </script>
