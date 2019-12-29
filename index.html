@@ -56,24 +56,17 @@
             $("#link").text("You link is ready!");
         });
 
-        function CopyToClipboard(containerid) {
-            if (document.selection) {
-                var range = document.body.createTextRange();
-                range.moveToElementText(document.getElementById(containerid));
-                range.select().createTextRange();
-                document.execCommand("copy");
-
-            } else if (window.getSelection) {
-                var range = document.createRange();
-                range.selectNode(document.getElementById(containerid));
-                window.getSelection().addRange(range);
-                document.execCommand("copy");
-                alert("text copied")
-            }
+        function CopyToClipboard() {
+        const el = document.createElement("textarea");
+        el.value = $("#copy_from_here").innerHTML;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand("copy");
+        document.body.removeChild(el);
         }
 
         $("#cpy_btn").click(function() {
-            CopyToClipboard("#copy_from_here");
+            CopyToClipboard();
         })
 
         function getUrlVars() {
